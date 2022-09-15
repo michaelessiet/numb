@@ -4,7 +4,7 @@ import 'package:numb/engines/conversion%20engine/parser.dart';
 
 void main() {
   test('100cm to meters', () {
-    expect(conversion(parser('100cm to meters')), equals('1.0 meters'));
+    expect(conversion(parser('100CM to Meters')), equals('1.0 meters'));
   });
   test('100kmph in knots', () {
     expect(conversion(parser('100kmph in knots')), equals('53.9958 knots'));

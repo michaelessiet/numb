@@ -4,7 +4,8 @@ Map<String, dynamic> parser(String text) {
   String rightside = textList[textList.length - 1];
 
   num leftnumber = num.parse(leftside.split(RegExp(r'([A-z][/]|[A-z]|-)'))[0]);
-  String leftUnit = leftside.split(RegExp(r'(\d+.\d+|\d+)'))[1].toLowerCase();
+  String leftUnit =
+      text.split(RegExp(r'(\d+\.\d+|\d+ |\d+)'))[1].split(' ')[0].toLowerCase();
   String rightUnit = rightside.split(RegExp(r'(\d+)'))[0].toLowerCase();
 
   return {

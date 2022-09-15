@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/length.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/speed.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/storage.dart';
 
 Map<String, List> conversionClasses = {
   'length': lengthUnits.values
@@ -10,12 +11,17 @@ Map<String, List> conversionClasses = {
   'speed': speedUnits.values
       .map((e) => e['phrases'])
       .expand((element) => element)
+      .toList(),
+  'storage': storageUnits.values
+      .map((e) => e['phrases'])
+      .expand((element) => element)
       .toList()
 };
 
 Map<String, Map> conversionObjects = {
   'speed': speedUnits,
   'length': lengthUnits,
+  'storage': storageUnits
 };
 
 String conversion(Map pair) {

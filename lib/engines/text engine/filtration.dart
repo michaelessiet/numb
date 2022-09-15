@@ -1,4 +1,4 @@
-import 'package:numb/constants/operand phrases.dart';
+import 'package:numb/engines/operand%20phrases.dart';
 
 List operandPhrases = [];
 List operandKeys = operands.keys.toList();
@@ -7,9 +7,10 @@ Map<String, List> filterText(String text) {
   for (var key in operandKeys) {
     operandPhrases.addAll(operands[key]!.take(10000));
   }
-  List splitText = text.trim().split(' ');
+  List splitText = text.trim().split(RegExp(r'[^0-9.]'));
+  List splitUsingDigits = text.trim().split(RegExp(r'[0-9.]| '));
 
-  List detectedOperands = splitText.map((e) {
+  List detectedOperands = splitUsingDigits.map((e) {
     if (operandPhrases.contains(e)) {
       return e;
     }

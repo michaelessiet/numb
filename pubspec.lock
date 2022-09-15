@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
+  auto_size_text_pk:
+    dependency: transitive
+    description:
+      name: auto_size_text_pk
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -85,13 +92,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  edit_distance:
-    dependency: "direct main"
-    description:
-      name: edit_distance
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.1"
   fake_async:
     dependency: transitive
     description:
@@ -111,6 +111,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      name: flutter_dotenv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -120,6 +127,11 @@ packages:
     version: "2.0.1"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -158,6 +170,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -303,6 +322,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
+  sqflite:
+    dependency: "direct main"
+    description:
+      name: sqflite
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3+1"
+  sqflite_common:
+    dependency: transitive
+    description:
+      name: sqflite_common
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.1+1"
   stack_trace:
     dependency: transitive
     description:
@@ -324,6 +357,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0+3"
   term_glyph:
     dependency: transitive
     description:
@@ -366,6 +406,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  velocity_x:
+    dependency: "direct main"
+    description:
+      name: velocity_x
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.1"
   vm_service:
     dependency: transitive
     description:
@@ -373,6 +420,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.4.0"
+  vxstate:
+    dependency: transitive
+    description:
+      name: vxstate
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   watcher:
     dependency: transitive
     description:
@@ -403,3 +457,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.17.6 <3.0.0"
+  flutter: ">=3.0.0"
