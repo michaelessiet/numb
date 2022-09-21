@@ -9,9 +9,15 @@ class AppTheme with ChangeNotifier {
           ? ThemeMode.dark
           : ThemeMode.light;
 
+  void init() {
+    box.writeIfNull('darkMode', false);
+    bool? darkMode = box.read('darkMode');
+    print(darkMode);
+  }
+
   void toggleTheme() {
     // box.erase();
-    box.writeIfNull('darkMode', false);
+    // box.writeIfNull('darkMode', false);
     box.write('darkMode', !box.read('darkMode'));
     notifyListeners();
   }

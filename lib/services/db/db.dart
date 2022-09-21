@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numb/services/idgen.dart';
 import 'package:sqflite/sqflite.dart';
 
 DB db = DB();
@@ -8,20 +9,21 @@ class DB {
 
   Future<void> init() async {
     var databasePath = await getDatabasesPath();
-    String path = '${databasePath}numb.db';
+    String path = '$databasePath/numb.db';
 
     database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       await db.execute(
-          'CREATE TABLE Calculations (id INTEGER PRIMARY KEY, calculation TEXT, result TEXT)');
+          'CREATE TABLE Calculations (id INTEGER PRIMARY KEY, calculation TEXT, result TEXT, key TEXT)');
     });
     print(database);
   }
 
   Future<void> add(String expression, String result) async {
+    String key = getRandomString(30);
     await database.transaction((txn) async {
       int id1 = await txn.rawInsert(
-          'INSERT INTO Calculations(calculation, result) VALUES("$expression", "$result")');
+          'INSERT INTO Calculations(calculation, result, key) VALUES("$expression", "$result", "$key")');
     });
   }
 
@@ -39,7 +41,7 @@ class DB {
   Future<List<Map<String, dynamic>>> getData() async {
     List<Map<String, dynamic>> dbData = await database.query('Calculations');
     if (dbData.isEmpty) {
-      await add('', '');
+      await add('', '--');
     }
     return dbData;
   }

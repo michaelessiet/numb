@@ -12,7 +12,7 @@ import 'package:numb/theme/theme.dart';
 
 Future main() async {
   dotenv.load();
-  db.init();
+  await db.init();
   await GetStorage.init();
   runApp(const MyApp());
 }
@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    appTheme.init();
     appTheme.addListener(() {
       setState(() {});
     });

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:numb/services/db/db.dart';
+import 'package:numb/services/idgen.dart';
 import 'package:numb/widgets/container.dart';
 import 'package:numb/widgets/expressionrow.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -27,7 +28,7 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
   }
 
   Future<void> handleAdd() async {
-    await db.add('', '');
+    await db.add('', '--');
     getDatabaseData();
   }
 
@@ -46,11 +47,13 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
         Flexible(
           child: ListView.builder(
               shrinkWrap: true,
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               itemCount: expressionList.length,
               itemBuilder: (context, index) {
                 int id = expressionList[index]['id'];
+                String key = expressionList[index]['key'];
                 return Dismissible(
-                    key: Key(id.toString()),
+                    key: Key(key),
                     onDismissed: ((direction) async {
                       await db.delete(id);
                     }),

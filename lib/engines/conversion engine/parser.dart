@@ -1,5 +1,5 @@
 Map<String, dynamic> parser(String text) {
-  List<String> textList = text.split(' ');
+  List<String> textList = text.trim().split(' ');
   String leftside = textList[0];
   String rightside = textList[textList.length - 1];
 

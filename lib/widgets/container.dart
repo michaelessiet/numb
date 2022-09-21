@@ -23,6 +23,7 @@ class NumbContainer extends StatelessWidget {
           const Icon(Icons.settings_outlined).p12().onTap(() {
             showModalBottomSheet(
               context: context,
+              backgroundColor: Theme.of(context).backgroundColor,
               shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(20))),
