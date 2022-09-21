@@ -3,12 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:numb/engines/main.dart';
+import 'package:numb/screens/helpscreen.dart';
+import 'package:numb/screens/mainscreen.dart';
 import 'package:numb/services/db/db.dart';
 import 'package:numb/theme/theme.dart';
 
 Future main() async {
   dotenv.load();
+  db.init();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -34,12 +39,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: appTheme.themeMode,
-      darkTheme: ThemeData(primarySwatch: Colors.red),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Inconsolata',
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: darkThemeData,
+      theme: lightThemeData,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(
+              title: 'Flutter',
+            ),
+        'help': (context) => const HelpScreen()
+      },
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -55,11 +64,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   dynamic calcresult = 0;
-  bool switchVal = false;
 
   @override
   void initState() {
-    db.init();
     // Timer(const Duration(seconds: 1), (() => db.wipe()));
     super.initState();
   }
@@ -73,29 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(calcresult.toString(),
-            style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 32)),
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: TextField(autocorrect: false, onChanged: calculate),
-          ),
-          Switch(
-              value: switchVal,
-              onChanged: ((value) {
-                appTheme.toggleTheme();
-                setState(() {
-                  switchVal = !switchVal;
-                });
-              })),
-          Text(appTheme.themeMode.toString())
-        ],
-      ),
-    );
+    return const MainCalcScreen();
   }
 }

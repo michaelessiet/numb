@@ -5,11 +5,11 @@ import 'package:numb/engines/converters.dart';
 
 dynamic numbEngine(String text) {
   try {
-    if (text.contains(RegExp(r'in ')) || text.contains(RegExp(r'to '))) {
+    if (text.contains(RegExp(r' in ')) || text.contains(RegExp(r' to '))) {
       return converter(text);
     }
     try {
-      return text.interpret();
+      return text.interpret().toStringAsFixed(6).interpret();
     } catch (e) {
       return basicCalculator(text);
     }

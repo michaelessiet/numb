@@ -15,13 +15,13 @@ class DB {
       await db.execute(
           'CREATE TABLE Calculations (id INTEGER PRIMARY KEY, calculation TEXT, result TEXT)');
     });
+    print(database);
   }
 
   Future<void> add(String expression, String result) async {
     await database.transaction((txn) async {
       int id1 = await txn.rawInsert(
           'INSERT INTO Calculations(calculation, result) VALUES("$expression", "$result")');
-      debugPrint('inserted1: $id1');
     });
   }
 
@@ -31,9 +31,16 @@ class DB {
         [expression, result, id]);
   }
 
+  Future<Map> getIdData(int id) async {
+    Map data = (await database.query('Calculations', where: 'id=$id'))[0];
+    return data;
+  }
+
   Future<List<Map<String, dynamic>>> getData() async {
-    List<Map<String, dynamic>> dbData =
-        await database.query('Calculations');
+    List<Map<String, dynamic>> dbData = await database.query('Calculations');
+    if (dbData.isEmpty) {
+      await add('', '');
+    }
     return dbData;
   }
 

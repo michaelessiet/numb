@@ -5,5 +5,5 @@ import 'package:function_tree/function_tree.dart';
 num basicCalculator(String text) {
   Map<String, List> filteredText = filterText(text);
   String compiledText = compileText(filteredText);
-  return compiledText.interpret();
+  return compiledText.interpret().toStringAsFixed(6).interpret();
 }
