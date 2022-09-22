@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/currency.dart';
 import 'package:numb/engines/main.dart';
 import 'package:numb/screens/helpscreen.dart';
 import 'package:numb/screens/mainscreen.dart';
@@ -11,8 +11,9 @@ import 'package:numb/services/db/db.dart';
 import 'package:numb/theme/theme.dart';
 
 Future main() async {
-  dotenv.load();
+  WidgetsFlutterBinding.ensureInitialized();
   await db.init();
+  dotenv.load().then((value){getExchangeRate();});
   await GetStorage.init();
   runApp(const MyApp());
 }

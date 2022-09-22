@@ -2,10 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:numb/services/db/db.dart';
-import 'package:numb/services/idgen.dart';
 import 'package:numb/widgets/container.dart';
 import 'package:numb/widgets/expressionrow.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -22,9 +19,14 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
 
   Future<void> getDatabaseData() async {
     List<Map> data = await db.getData();
-    setState(() {
-      expressionList = data;
-    });
+    if (data.isEmpty) {
+      db.add('', '--');
+      getDatabaseData();
+    } else {
+      setState(() {
+        expressionList = data;
+      });
+    }
   }
 
   Future<void> handleAdd() async {

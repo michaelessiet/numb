@@ -15,8 +15,17 @@ class DB {
         onCreate: (Database db, int version) async {
       await db.execute(
           'CREATE TABLE Calculations (id INTEGER PRIMARY KEY, calculation TEXT, result TEXT, key TEXT)');
+      await db.execute(
+          'CREATE TABLE ExchangeRates (id INTEGER PRIMARY KEY, currency TEXT, rate FLOAT, timestamp INTEGER)');
     });
-    print(database);
+    debugPrint(database.toString());
+  }
+
+  Future<void> addCurrency(String currency, double rate, int timestamp) async {
+    await database.transaction((txn) async {
+      await txn.rawInsert(
+          'INSERT INTO ExchangeRates(currency,rate,timestamp) VALUES("$currency","$rate","$timestamp")');
+    });
   }
 
   Future<void> add(String expression, String result) async {
@@ -40,9 +49,11 @@ class DB {
 
   Future<List<Map<String, dynamic>>> getData() async {
     List<Map<String, dynamic>> dbData = await database.query('Calculations');
-    if (dbData.isEmpty) {
-      await add('', '--');
-    }
+    return dbData;
+  }
+
+  Future<List<Map<String, dynamic>>> getExchangeRateData() async {
+    List<Map<String, dynamic>> dbData = await database.query('ExchangeRates');
     return dbData;
   }
 
