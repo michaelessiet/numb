@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +21,19 @@ class ExpressionRow extends StatefulWidget {
 class _ExpressionRowState extends State<ExpressionRow> {
   String result = '--';
   TextEditingController textEditingController = TextEditingController();
+  List<String> hints = [
+    '1 plus 1',
+    'log(2) times 20',
+    '60 * pi',
+    '5usd in gbp',
+    '80km/hr to miles/hr',
+    '4miles in meters',
+    '(pi * 120) / log(32)',
+    '89+30-82*78/5',
+    '1/2 + 2/3',
+    '59 divided-by 8'
+  ];
+  late String hint;
 
   Future<void> handleInput(String text) async {
     setState(() {
@@ -37,6 +53,7 @@ class _ExpressionRowState extends State<ExpressionRow> {
   @override
   void initState() {
     super.initState();
+    hint = hints[Random().nextInt(10).toInt()];
     replaceData();
   }
 
@@ -51,12 +68,16 @@ class _ExpressionRowState extends State<ExpressionRow> {
           children: [
             Flexible(
                 child: TextField(
+              keyboardAppearance: Theme.of(context).brightness,
               controller: textEditingController,
+              autocorrect: false,
               maxLines: 5,
               minLines: 1,
               style: Theme.of(context).primaryTextTheme.bodyLarge,
-              decoration: const InputDecoration(
-                  border: InputBorder.none, hintText: '1 plus 1', ),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: hint,
+              ),
               onChanged: (value) => handleInput(value),
             ).wTwoThird(context)),
             CupertinoButton(
@@ -79,7 +100,7 @@ class _ExpressionRowState extends State<ExpressionRow> {
         ),
         TweenAnimationBuilder(
             tween: Tween(begin: 0, end: MediaQuery.of(context).size.width - 60),
-            duration: const Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 1500),
             curve: const ElasticOutCurve(),
             builder: (context, num value, _) => Divider(
                   thickness: 1,

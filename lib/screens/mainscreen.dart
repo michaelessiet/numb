@@ -30,7 +30,7 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
   }
 
   Future<void> handleAdd() async {
-    await db.add('', '--');
+    String addedKey = await db.add('', '--');
     getDatabaseData();
   }
 
@@ -58,6 +58,11 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
                     key: Key(key),
                     onDismissed: ((direction) async {
                       await db.delete(id);
+                      setState(() {
+                        expressionList = expressionList
+                            .filter((element) => element['id'] != id)
+                            .toList();
+                      });
                     }),
                     child: ExpressionRow(index: id));
               }),

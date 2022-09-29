@@ -13,7 +13,9 @@ import 'package:numb/theme/theme.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await db.init();
-  dotenv.load().then((value){getExchangeRate();});
+  dotenv.load().then((value) {
+    getExchangeRate();
+  });
   await GetStorage.init();
   runApp(const MyApp());
 }

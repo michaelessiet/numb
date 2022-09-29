@@ -12,9 +12,14 @@ class NumbContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? routename = ModalRoute.of(context)?.settings.name;
     return Scaffold(
       appBar: VxAppBar(
         title: 'Numb'.text.semiBold.size(32).make(),
+        brightness: Theme.of(context)
+            .appBarTheme
+            .systemOverlayStyle!
+            .statusBarBrightness,
         centerTitle: false,
         elevation: 0,
         backgroundColor: Theme.of(context).backgroundColor,
@@ -30,10 +35,10 @@ class NumbContainer extends StatelessWidget {
               builder: (context) => Column(
                 children: [
                   Divider(
-                          color: Theme.of(context).primaryIconTheme.color,
-                          thickness: 7.5, height: 40,)
-                      .w(40)
-                      .cornerRadius(40),
+                    color: Theme.of(context).primaryIconTheme.color,
+                    thickness: 7.5,
+                    height: 40,
+                  ).w(40).cornerRadius(40),
                   ListTile(
                       leading: Text(
                         'Theme',
@@ -46,7 +51,10 @@ class NumbContainer extends StatelessWidget {
                         ),
                         CupertinoSwitch(
                           value: box.read('darkMode'),
-                          activeColor: Theme.of(context).primaryTextTheme.bodyMedium!.color,
+                          activeColor: Theme.of(context)
+                              .primaryTextTheme
+                              .bodyMedium!
+                              .color,
                           onChanged: ((value) {
                             appTheme.toggleTheme();
                           }),
@@ -61,7 +69,7 @@ class NumbContainer extends StatelessWidget {
                       'Help/Instructions ⓘ',
                       style: Theme.of(context).primaryTextTheme.bodyLarge,
                     ),
-                    onTap: () => Navigator.pushNamed(context, 'help'),
+                    onTap: () => routename == 'help' ? context.pop() : Navigator.pushNamed(context, 'help'),
                   )
                 ],
               )

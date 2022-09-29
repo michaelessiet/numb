@@ -14,7 +14,3 @@ Map<String, dynamic> parser(String text) {
     'toUnit': rightUnit,
   };
 }
-
-// void main(List<String> args) {
-//   print(parser('300m/s in kilometers-per-second'));
-// }

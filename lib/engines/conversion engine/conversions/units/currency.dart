@@ -87,8 +87,8 @@ Future<void> getExchangeRate() async {
       });
 
       db.addCurrency(rate.key, rate.value, exchangeRates.timestamp);
-      debugPrint('added from api');
     }
+    debugPrint('added from api');
   } else {
     for (int i = 0; i < dbData.length; i++) {
       String key = dbData[i]['currency'];
@@ -97,7 +97,7 @@ Future<void> getExchangeRate() async {
         key.toLowerCase(): {
           'id': key.toLowerCase(),
           'phrases': [key.toLowerCase()],
-          'unit': rate
+          'unit': 1 / rate
         }
       });
     }

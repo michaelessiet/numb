@@ -46,3 +46,22 @@ Map<String, List> filterText(String text) {
   }
   return {'operands': ops, 'values': detectedValues};
 }
+
+// String filterFactorials(String text) {
+//   // String newString = '';
+//   List<String> textArray = text.split(' ');
+
+//   for (int i = 0; i < textArray.length; i++) {
+//     if (operands['!']!.contains(textArray[i])) {
+//       num number = textArray[i-1].interpret();
+//       num iterator = textArray[i-1].interpret()-1;
+//       while (iterator > 1) {
+//         number = number * iterator;
+//         iterator--;
+//       }
+//       textArray.replaceRange(i-1, i+1, [number.toString()]);
+//     }
+//   }
+//   print(textArray);
+//   return textArray.join();
+// }

@@ -28,12 +28,13 @@ class DB {
     });
   }
 
-  Future<void> add(String expression, String result) async {
+  Future<String> add(String expression, String result) async {
     String key = getRandomString(30);
     await database.transaction((txn) async {
       int id1 = await txn.rawInsert(
           'INSERT INTO Calculations(calculation, result, key) VALUES("$expression", "$result", "$key")');
     });
+    return key;
   }
 
   Future<void> modify(int id, String expression, String result) async {
@@ -63,5 +64,6 @@ class DB {
 
   Future<void> deleteAll() async {
     await database.rawDelete('DELETE FROM Calculations');
+    // await database.rawDelete('DELETE FROM ExchangeRates');
   }
 }

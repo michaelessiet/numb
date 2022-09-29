@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:numb/constants/colors.dart';
 
@@ -26,6 +27,10 @@ class AppTheme with ChangeNotifier {
 AppTheme appTheme = AppTheme();
 
 ThemeData lightThemeData = ThemeData(
+    appBarTheme: const AppBarTheme(
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.light)),
+    brightness: Brightness.light,
     fontFamily: 'Inconsolata',
     primaryColor: myWhiteGrey,
     primaryIconTheme: const IconThemeData(color: myDarkGrey, size: 36),
@@ -43,6 +48,10 @@ ThemeData lightThemeData = ThemeData(
     dividerColor: myDarkGrey);
 
 ThemeData darkThemeData = ThemeData(
+    appBarTheme: const AppBarTheme(
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)),
+    brightness: Brightness.dark,
     fontFamily: 'Inconsolata',
     primaryColor: myDarkGrey,
     primaryIconTheme: const IconThemeData(color: myWhiteGrey, size: 36),

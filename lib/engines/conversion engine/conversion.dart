@@ -3,6 +3,7 @@ import 'package:numb/engines/conversion%20engine/conversions/units/currency.dart
 import 'package:numb/engines/conversion%20engine/conversions/units/length.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/speed.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/storage.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/time.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/volume.dart';
 
 Map<String, Map> conversionObjects = {
@@ -10,7 +11,8 @@ Map<String, Map> conversionObjects = {
   'length': lengthUnits,
   'storage': storageUnits,
   'volume': volumeUnits,
-  'currency': currencyUnits
+  'currency': currencyUnits,
+  'time':timeUnits
 };
 
 Map<String, List> conversionClasses = conversionObjects.map((key, value) =>
