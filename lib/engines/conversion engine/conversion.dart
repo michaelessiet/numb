@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/currency.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/length.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/speed.dart';
@@ -12,7 +13,7 @@ Map<String, Map> conversionObjects = {
   'storage': storageUnits,
   'volume': volumeUnits,
   'currency': currencyUnits,
-  'time':timeUnits
+  'time': timeUnits
 };
 
 Map<String, List> conversionClasses = conversionObjects.map((key, value) =>
@@ -52,7 +53,11 @@ String conversion(Map pair) {
 
       num converted = (pair['from'] * double.parse(fromUnitIDValue)) /
           double.parse(toUnitIDValue);
-      return '${num.parse(converted.toStringAsFixed(4))} ${pair['toUnit']}';
+      String precisionedValue = converted.toStringAsFixed(4);
+      num reparsed = num.parse(precisionedValue);
+      String formattedValue = NumberFormat().format(reparsed);
+
+      return '${formattedValue} ${pair['toUnit']}';
     }
 
     return '--';

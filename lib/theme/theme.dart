@@ -36,13 +36,13 @@ ThemeData lightThemeData = ThemeData(
     primaryIconTheme: const IconThemeData(color: myDarkGrey, size: 36),
     primaryTextTheme: const TextTheme(
         bodyLarge: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w600, color: myDarkGrey),
+            fontSize: 18, fontWeight: FontWeight.w600, color: myDarkGrey),
         titleMedium: TextStyle(
             fontSize: 24, fontWeight: FontWeight.w600, color: myDarkGrey),
         titleLarge: TextStyle(
             fontSize: 32, fontWeight: FontWeight.w600, color: myDarkGrey),
         bodyMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w600, color: myLightBlue)),
+            fontSize: 18, fontWeight: FontWeight.w600, color: myLightBlue)),
     hintColor: myDarkGrey50,
     backgroundColor: myWhiteGrey,
     dividerColor: myDarkGrey);
@@ -57,13 +57,13 @@ ThemeData darkThemeData = ThemeData(
     primaryIconTheme: const IconThemeData(color: myWhiteGrey, size: 36),
     primaryTextTheme: const TextTheme(
         bodyLarge: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w600, color: myWhiteGrey),
+            fontSize: 18, fontWeight: FontWeight.w600, color: myWhiteGrey),
         titleMedium: TextStyle(
             fontSize: 24, fontWeight: FontWeight.w600, color: myWhiteGrey),
         titleLarge: TextStyle(
             fontSize: 32, fontWeight: FontWeight.w600, color: myWhiteGrey),
         bodyMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w600, color: myLightBlue)),
+            fontSize: 18, fontWeight: FontWeight.w600, color: myLightBlue)),
     hintColor: myWhiteGrey50,
     backgroundColor: myDarkGrey,
     dividerColor: myWhiteGrey);
