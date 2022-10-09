@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:numb/engines/calculators.dart';
 import 'package:function_tree/function_tree.dart';
 import 'package:numb/engines/converters.dart';
+import 'package:numb/engines/text%20engine/filtration.dart';
 
 dynamic numbEngine(String text, {int precision = 6}) {
   try {
@@ -10,9 +11,10 @@ dynamic numbEngine(String text, {int precision = 6}) {
     }
 
     try {
+      text = convertFunctions(text);
       String precisionedValue = text.interpret().toStringAsFixed(precision);
       num parsed = num.parse(precisionedValue);
-      
+
       String format = '###,###';
 
       for (int i = 0; i <= precision; i++) {

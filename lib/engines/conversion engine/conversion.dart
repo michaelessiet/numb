@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/area.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/currency.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/length.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/speed.dart';
@@ -13,7 +14,8 @@ Map<String, Map> conversionObjects = {
   'storage': storageUnits,
   'volume': volumeUnits,
   'currency': currencyUnits,
-  'time': timeUnits
+  'time': timeUnits,
+  'area':areaUnits
 };
 
 Map<String, List> conversionClasses = conversionObjects.map((key, value) =>
@@ -26,7 +28,7 @@ Map<String, List> conversionClasses = conversionObjects.map((key, value) =>
 
 String conversion(Map pair) {
   try {
-    String key = conversionClasses.keys
+    String fromkey = conversionClasses.keys
         .where(
             (element) => conversionClasses[element]!.contains(pair['fromUnit']))
         .toList()[0]
@@ -37,14 +39,14 @@ String conversion(Map pair) {
         .toList()[0]
         .toString();
 
-    if (key == toKey) {
-      String fromUnitIDValue = conversionObjects[key]!
+    if (fromkey == toKey) {
+      String fromUnitIDValue = conversionObjects[fromkey]!
           .values
           .where((element) => element['phrases'].contains(pair['fromUnit']))
           .map((e) => e['unit'])
           .toList()[0]
           .toString();
-      String toUnitIDValue = conversionObjects[key]!
+      String toUnitIDValue = conversionObjects[fromkey]!
           .values
           .where((element) => element['phrases'].contains(pair['toUnit']))
           .map((e) => e['unit'])
@@ -53,6 +55,7 @@ String conversion(Map pair) {
 
       num converted = (pair['from'] * double.parse(fromUnitIDValue)) /
           double.parse(toUnitIDValue);
+
       String precisionedValue = converted.toStringAsFixed(4);
       num reparsed = num.parse(precisionedValue);
       String formattedValue = NumberFormat().format(reparsed);

@@ -1,14 +1,18 @@
-import 'package:flutter/foundation.dart';
 import 'package:function_tree/function_tree.dart';
-import 'package:numb/engines/operand%20phrases.dart';
+import 'package:numb/engines/utils/calc%20functions.dart';
+import 'package:numb/engines/utils/operand%20phrases.dart';
 
 List operandPhrases = [];
 List operandKeys = operands.keys.toList();
+List calculationFunctionKeys = functions.keys.toList();
 
 Map<String, List> filterText(String text) {
+  text = convertFunctions(text);
+
   for (var key in operandKeys) {
     operandPhrases.addAll(operands[key]!.take(10000));
   }
+
   String checkedForMathExp = text.trim().split(' ').map((e) {
     try {
       return e.interpret();
@@ -47,21 +51,28 @@ Map<String, List> filterText(String text) {
   return {'operands': ops, 'values': detectedValues};
 }
 
-// String filterFactorials(String text) {
-//   // String newString = '';
-//   List<String> textArray = text.split(' ');
+String convertFunctions(String text) {
+  num result = 0;
+  String finaltext = text;
 
-//   for (int i = 0; i < textArray.length; i++) {
-//     if (operands['!']!.contains(textArray[i])) {
-//       num number = textArray[i-1].interpret();
-//       num iterator = textArray[i-1].interpret()-1;
-//       while (iterator > 1) {
-//         number = number * iterator;
-//         iterator--;
-//       }
-//       textArray.replaceRange(i-1, i+1, [number.toString()]);
-//     }
-//   }
-//   print(textArray);
-//   return textArray.join();
-// }
+  for (var value in text.split(RegExp(r' |\((?=[A-z])'))) {
+    for (int i = 0; i < calculationFunctionKeys.length; i++) {
+      if (value.contains(calculationFunctionKeys[i])) {
+        var regex = new RegExp(r'(\d+\.\d+)|(\d+)');
+        List<Match> args = regex.allMatches(value).toList();
+
+        if (args.length > 1) {
+          result = functions[calculationFunctionKeys[i]](
+              num.parse(args[0][0]!), num.parse(args[1][0]!));
+        } else {
+          result =
+              functions[calculationFunctionKeys[i]](num.parse(args[0][0]!));
+        }
+
+        finaltext = finaltext.replaceAll(value, result.toString());
+      }
+    }
+  }
+
+  return finaltext;
+}

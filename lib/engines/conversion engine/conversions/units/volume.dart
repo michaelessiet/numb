@@ -1,17 +1,17 @@
 Map<String, Map> volumeUnits = {
   'liter': {
     'id': 'l',
-    'phrases': ['liters', 'liter', 'l'],
+    'phrases': ['liters', 'liter', 'l','litre','litres'],
     'unit': 1
   },
   'milliliter': {
     'id': 'ml',
-    'phrases': ['milliters', 'milliliter', 'ml'],
+    'phrases': ['milliliters', 'milliliter', 'ml','millilitres','millilitre'],
     'unit': 0.001
   },
   'cubic-meters': {
     'id': 'm3',
-    'phrases': ['cubic-meters', 'm3', 'cubic-meter'],
+    'phrases': ['cubic-meters', 'm3', 'cubic-meter','cbm', 'cubic-metres','cubic-metre'],
     'unit': 1000
   },
   'fluid-ounce': {
@@ -49,7 +49,7 @@ Map<String, Map> volumeUnits = {
   },
   'cubic-inch': {
     'id': 'cubic-inch',
-    'phrases': ['cubic-inches', 'cubic-inch', 'in3'],
+    'phrases': ['cubic-inches', 'cubic-inch', 'in3','cbinch','cbin'],
     'unit': 0.016387
   },
   'gallon': {
@@ -61,5 +61,10 @@ Map<String, Map> volumeUnits = {
     'id': 'quart',
     'phrases': ['quarts', 'quart'],
     'unit': 0.946353
+  },
+  'centiliter':{
+    'id':'cl',
+    'phrases':['centiliters','cl','centilitres','centiliter','centilitre'],
+    'unit':0.01
   }
 };
