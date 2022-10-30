@@ -1,4 +1,4 @@
-Map<String, dynamic> areaUnits = {
+Map<String, Map> areaUnits = {
   'square-meter': {
     'id': 'sqm',
     'phrases': [
@@ -7,7 +7,11 @@ Map<String, dynamic> areaUnits = {
       'square-metres',
       'spquare-meter',
       'sqm',
-      'm2'
+      'm2',
+      'sq-meter',
+      'sqmeter',
+      'sqmeters',
+      'sq-meters'
     ],
     'unit': 1
   },
@@ -49,7 +53,7 @@ Map<String, dynamic> areaUnits = {
   },
   'square-miles': {
     'id': 'sqmi',
-    'phrases': ['square-miles', 'square-mile', 'sqmi', 'mi2'],
+    'phrases': ['square-miles', 'square-mile', 'sqmi', 'mi2','sq-miles','sqmiles','sqmile','sq-mile'],
     'unit': 2589988.110336
   },
   'square-kilometer': {
@@ -67,7 +71,7 @@ Map<String, dynamic> areaUnits = {
   'square-yard': {
     'id': 'sqy',
     'phrases': [
-      'sqy',
+      'sqyd',
       'square-yards',
       'sq-yards',
       'sqyards',

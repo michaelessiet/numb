@@ -11,7 +11,7 @@ Map<String, Map> volumeUnits = {
   },
   'cubic-meters': {
     'id': 'm3',
-    'phrases': ['cubic-meters', 'm3', 'cubic-meter','cbm', 'cubic-metres','cubic-metre'],
+    'phrases': ['cubic-meters', 'm3', 'cubic-meter','cbm', 'cubic-metres','cubic-metre', 'cb-meters', 'cbmeters','cbmeter','cb-meter'],
     'unit': 1000
   },
   'fluid-ounce': {

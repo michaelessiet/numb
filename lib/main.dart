@@ -9,9 +9,11 @@ import 'package:numb/screens/helpscreen.dart';
 import 'package:numb/screens/mainscreen.dart';
 import 'package:numb/services/db/db.dart';
 import 'package:numb/theme/theme.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
   await db.init();
   dotenv.load().then((value) {
     getExchangeRate();
@@ -30,7 +32,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     appTheme.init();
     appTheme.addListener(() {
@@ -52,7 +53,6 @@ class _MyAppState extends State<MyApp> {
             ),
         'help': (context) => const HelpScreen()
       },
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -71,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // Timer(const Duration(seconds: 1), (() => db.wipe()));
     super.initState();
   }
 

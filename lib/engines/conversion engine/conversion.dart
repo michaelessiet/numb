@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/angular.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/area.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/currency.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/length.dart';
@@ -7,6 +8,7 @@ import 'package:numb/engines/conversion%20engine/conversions/units/speed.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/storage.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/time.dart';
 import 'package:numb/engines/conversion%20engine/conversions/units/volume.dart';
+import 'package:numb/engines/conversion%20engine/conversions/units/weight.dart';
 
 Map<String, Map> conversionObjects = {
   'speed': speedUnits,
@@ -15,7 +17,9 @@ Map<String, Map> conversionObjects = {
   'volume': volumeUnits,
   'currency': currencyUnits,
   'time': timeUnits,
-  'area':areaUnits
+  'area':areaUnits,
+  'weight':weightUnits,
+  'angles': angularUnits
 };
 
 Map<String, List> conversionClasses = conversionObjects.map((key, value) =>

@@ -36,8 +36,9 @@ class _ExpressionRowState extends State<ExpressionRow> {
   late String hint;
 
   Future<void> handleInput(String text) async {
+    String res = await numbEngine(text);
     setState(() {
-      result = numbEngine(text).toString();
+      result = res;
     });
     await db.modify(widget.index, text, result);
   }
@@ -78,7 +79,7 @@ class _ExpressionRowState extends State<ExpressionRow> {
                 border: InputBorder.none,
                 hintText: hint,
               ),
-              onChanged: (value) => handleInput(value),
+              onChanged: (value) => handleInput(value.toLowerCase()),
             ).wTwoThird(context)),
             CupertinoButton(
                 child: Text(
